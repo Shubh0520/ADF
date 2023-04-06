@@ -1,0 +1,9 @@
+{
+	"name": "kldatafactory2005",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "694e7c7e-0ae3-450b-819a-21d538347063",
+		"tenantId": "76e2be04-7abd-4d90-a9ea-392109d30ce2"
+	}
+}
