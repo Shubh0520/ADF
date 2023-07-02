@@ -1,0 +1,9 @@
+{
+	"name": "shubhadf001",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "4329ca68-78a5-49ad-8b5a-2332ee686bda",
+		"tenantId": "e4eb0231-c51a-4f6e-9778-f516363d868c"
+	}
+}
