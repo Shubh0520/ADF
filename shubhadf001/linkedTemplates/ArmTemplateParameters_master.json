@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "shubhadf001"
+		},
+		"AzureDataLakeStorageADLS_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabaseSQL_connectionString": {
+			"value": ""
+		},
+		"blob_landingdata_connectionString": {
+			"value": ""
+		},
+		"ls_adls_raw_layer_accountKey": {
+			"value": ""
+		},
+		"ls_adlsgen2_covidreportingdl_accountKey": {
+			"value": ""
+		},
+		"ls_azureblob_covidreporting_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorageADLS_properties_typeProperties_url": {
+			"value": "https://datalakeaccountra.dfs.core.windows.net/"
+		},
+		"ls_adls_raw_layer_properties_typeProperties_url": {
+			"value": "https://datalakeaccountra.dfs.core.windows.net/"
+		},
+		"ls_adlsgen2_covidreportingdl_properties_typeProperties_url": {
+			"value": "https://covidreptngdatalake01.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
