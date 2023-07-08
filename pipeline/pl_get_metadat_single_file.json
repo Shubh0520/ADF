@@ -19,7 +19,16 @@
 						"referenceName": "ds_source",
 						"type": "DatasetReference"
 					},
-					"fieldList": [],
+					"fieldList": [
+						"columnCount",
+						"contentMD5",
+						"exists",
+						"itemName",
+						"itemType",
+						"lastModified",
+						"size",
+						"structure"
+					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
 						"enablePartitionDiscovery": false
