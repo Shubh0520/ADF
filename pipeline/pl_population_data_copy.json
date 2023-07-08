@@ -82,6 +82,9 @@
 				}
 			}
 		],
+		"folder": {
+			"name": "Activities_Handson"
+		},
 		"annotations": []
 	}
 }
