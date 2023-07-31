@@ -1,0 +1,9 @@
+{
+	"name": "covidreporting-data-factory",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "d7acec72-dbd0-4a7f-9c67-ad404a25b745",
+		"tenantId": "2158637f-cdc6-42e0-8c8c-91029382774a"
+	}
+}
