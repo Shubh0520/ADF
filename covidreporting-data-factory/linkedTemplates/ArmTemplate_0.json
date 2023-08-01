@@ -118,6 +118,281 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/ls_covidreporting_dl')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Covid Data Copy')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy Population Data",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Check File exists",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".txt"
+								}
+							},
+							"enableStaging": false,
+							"logSettings": {
+								"enableCopyActivityLog": true,
+								"copyActivityLogSettings": {
+									"logLevel": "Info",
+									"enableReliableLogging": false
+								},
+								"logLocationSettings": {
+									"linkedServiceName": {
+										"referenceName": "ls_covidreporting_dl",
+										"type": "LinkedServiceReference"
+									}
+								}
+							},
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "indic_de,geo\\time",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "indic_de,geo\\time",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "2008 ",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "2008 ",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "2009 ",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "2009 ",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "2010 ",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "2010 ",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "2011 ",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "2011 ",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "2012 ",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "2012 ",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "2013 ",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "2013 ",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "2014 ",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "2014 ",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "2015 ",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "2015 ",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "2016 ",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "2016 ",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "2017 ",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "2017 ",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "2018 ",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "2018 ",
+											"type": "String",
+											"physicalType": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "2019 ",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "2019 ",
+											"type": "String",
+											"physicalType": "String"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "ds_population_raw",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "ds_population_tsv",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Check File exists",
+						"type": "Validation",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "ds_population_raw",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"timeout": "0.00:00:30",
+							"sleep": 10
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"folder": {
+					"name": "CovidReportingPipelines"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_population_raw')]",
+				"[concat(variables('factoryId'), '/datasets/ds_population_tsv')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_covidreporting_dl')]"
+			]
 		}
 	]
 }
