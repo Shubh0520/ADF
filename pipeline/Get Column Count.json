@@ -50,6 +50,18 @@
 						"value": "@equals(activity('Get Column count').output.columnCount, 13)",
 						"type": "Expression"
 					},
+					"ifFalseActivities": [
+						{
+							"name": "Column count does not match",
+							"type": "Fail",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"message": "Column Count Does not match",
+								"errorCode": "400"
+							}
+						}
+					],
 					"ifTrueActivities": [
 						{
 							"name": "Copy data",
