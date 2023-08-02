@@ -13,6 +13,9 @@
 		},
 		"ls_covidreporting_dl_properties_typeProperties_url": {
 			"value": "https://covidreportingdl2005.dfs.core.windows.net/"
+		},
+		"trigger_copy_properties_typeProperties_scope": {
+			"value": "/subscriptions/34ad87c5-934d-4ecc-8766-485413ab42d0/resourceGroups/adf_synapase_resource_group/providers/Microsoft.EventGrid/topics/event-grid-topic-copy"
 		}
 	}
 }
