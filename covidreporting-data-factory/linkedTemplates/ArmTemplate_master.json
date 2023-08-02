@@ -19,6 +19,10 @@
 			"type": "string",
 			"defaultValue": "https://covidreportingdl2005.dfs.core.windows.net/"
 		},
+		"ls_http_opendata_ecdc_europa_eu_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://github.com"
+		},
 		"trigger1_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/34ad87c5-934d-4ecc-8766-485413ab42d0/resourceGroups/adf_synapase_resource_group/providers/Microsoft.Storage/storageAccounts/covidreportingsa2005"
@@ -58,6 +62,9 @@
 					},
 					"ls_covidreporting_dl_properties_typeProperties_url": {
 						"value": "[parameters('ls_covidreporting_dl_properties_typeProperties_url')]"
+					},
+					"ls_http_opendata_ecdc_europa_eu_properties_typeProperties_url": {
+						"value": "[parameters('ls_http_opendata_ecdc_europa_eu_properties_typeProperties_url')]"
 					},
 					"trigger1_properties_typeProperties_scope": {
 						"value": "[parameters('trigger1_properties_typeProperties_scope')]"
