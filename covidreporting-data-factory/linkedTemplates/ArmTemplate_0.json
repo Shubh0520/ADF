@@ -19,9 +19,9 @@
 			"type": "string",
 			"defaultValue": "https://covidreportingdl2005.dfs.core.windows.net/"
 		},
-		"trigger_copy_properties_typeProperties_scope": {
+		"trigger1_properties_typeProperties_scope": {
 			"type": "string",
-			"defaultValue": "/subscriptions/34ad87c5-934d-4ecc-8766-485413ab42d0/resourceGroups/adf_synapase_resource_group/providers/Microsoft.EventGrid/topics/event-grid-topic-copy"
+			"defaultValue": "/subscriptions/34ad87c5-934d-4ecc-8766-485413ab42d0/resourceGroups/adf_synapase_resource_group/providers/Microsoft.Storage/storageAccounts/covidreportingsa2005"
 		}
 	},
 	"variables": {
@@ -587,7 +587,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/trigger_copy')]",
+			"name": "[concat(parameters('factoryName'), '/trigger1')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -602,13 +602,13 @@
 						"parameters": {}
 					}
 				],
-				"type": "CustomEventsTrigger",
+				"type": "BlobEventsTrigger",
 				"typeProperties": {
-					"subjectEndsWith": "",
-					"subjectBeginsWith": "population_by_age.tsv_01.gz",
-					"scope": "[parameters('trigger_copy_properties_typeProperties_scope')]",
+					"blobPathBeginsWith": "/population/blobs/population_by_age.tsv_01.gz",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('trigger1_properties_typeProperties_scope')]",
 					"events": [
-						"Custom events"
+						"Microsoft.Storage.BlobCreated"
 					]
 				}
 			},
