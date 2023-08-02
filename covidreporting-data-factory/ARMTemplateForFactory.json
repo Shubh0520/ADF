@@ -605,7 +605,7 @@
 				"type": "CustomEventsTrigger",
 				"typeProperties": {
 					"subjectEndsWith": "",
-					"subjectBeginsWith": "population_by_age (1).tsv.gz",
+					"subjectBeginsWith": "population_by_age.tsv_01.gz",
 					"scope": "[parameters('trigger_copy_properties_typeProperties_scope')]",
 					"events": [
 						"File"
