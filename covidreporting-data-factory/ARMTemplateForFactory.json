@@ -26,6 +26,14 @@
 		"trigger1_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/34ad87c5-934d-4ecc-8766-485413ab42d0/resourceGroups/adf_synapase_resource_group/providers/Microsoft.Storage/storageAccounts/covidreportingsa2005"
+		},
+		"trigger_ECDC_http_properties_pl_Cases_and_deaths_parameters_sourceRelativeURL": {
+			"type": "string",
+			"defaultValue": "cloudboxacademy/covid19/raw/main/ecdc_data/cases_deaths.csv"
+		},
+		"trigger_ECDC_http_properties_pl_Cases_and_deaths_parameters_SinkFileName": {
+			"type": "string",
+			"defaultValue": "cases_deaths.csv"
 		}
 	},
 	"variables": {
@@ -308,7 +316,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Cases and deaths')]",
+			"name": "[concat(parameters('factoryName'), '/pl_Cases_and_deaths')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -809,6 +817,40 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/Get Column Count')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trigger_ECDC_http')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pl_Cases_and_deaths",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"sourceRelativeURL": "[parameters('trigger_ECDC_http_properties_pl_Cases_and_deaths_parameters_sourceRelativeURL')]",
+							"SinkFileName": "[parameters('trigger_ECDC_http_properties_pl_Cases_and_deaths_parameters_SinkFileName')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Hour",
+						"interval": 5,
+						"startTime": "2023-08-03T15:03:00",
+						"endTime": "2023-08-04T09:24:00",
+						"timeZone": "India Standard Time"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_Cases_and_deaths')]"
 			]
 		}
 	]
