@@ -308,7 +308,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ECDC_data_ingestion')]",
+			"name": "[concat(parameters('factoryName'), '/Cases and deaths')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -363,7 +363,7 @@
 								"type": "DatasetReference",
 								"parameters": {
 									"relativeURL": {
-										"value": "@variables('sourceRelativeURL')",
+										"value": "@pipeline().parameters.sourceRelativeURL",
 										"type": "Expression"
 									}
 								}
@@ -375,7 +375,7 @@
 								"type": "DatasetReference",
 								"parameters": {
 									"fileName": {
-										"value": "@variables('SinkFileName')",
+										"value": "@pipeline().parameters.SinkFileName",
 										"type": "Expression"
 									}
 								}
@@ -387,14 +387,12 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
-				"variables": {
+				"parameters": {
 					"sourceRelativeURL": {
-						"type": "String",
-						"defaultValue": "cloudboxacademy/covid19/raw/main/ecdc_data/cases_deaths.csv"
+						"type": "string"
 					},
 					"SinkFileName": {
-						"type": "String",
-						"defaultValue": "cases_deaths.csv"
+						"type": "string"
 					}
 				},
 				"folder": {
