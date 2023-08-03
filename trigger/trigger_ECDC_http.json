@@ -1,0 +1,18 @@
+{
+	"name": "trigger_ECDC_http",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 5,
+				"startTime": "2023-08-03T09:24:00",
+				"endTime": "2023-08-04T09:24:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}
