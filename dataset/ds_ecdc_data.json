@@ -1,0 +1,35 @@
+{
+	"name": "ds_ecdc_data",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_covidreporting_sa",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "poputlation_raw"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "ecdc_file.json",
+				"container": "population"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"sourceBaseURL": {
+					"type": "string"
+				},
+				"sourceRelativeURL": {
+					"type": "string"
+				},
+				"sinkFileName": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}

@@ -54,6 +54,10 @@
 							"relativeURL": {
 								"value": "@pipeline().parameters.sourceRelativeURL",
 								"type": "Expression"
+							},
+							"baseURL": {
+								"value": "@pipeline().parameters.sourceBaseURL",
+								"type": "Expression"
 							}
 						}
 					}
@@ -66,6 +70,14 @@
 							"fileName": {
 								"value": "@pipeline().parameters.SinkFileName",
 								"type": "Expression"
+							},
+							"baseURL": {
+								"value": "@pipeline().parameters.sourceBaseURL",
+								"type": "Expression"
+							},
+							"relativeURL": {
+								"value": "@pipeline().parameters.sourceRelativeURL",
+								"type": "Expression"
 							}
 						}
 					}
@@ -77,6 +89,9 @@
 				"type": "string"
 			},
 			"SinkFileName": {
+				"type": "string"
+			},
+			"sourceBaseURL": {
 				"type": "string"
 			}
 		},
