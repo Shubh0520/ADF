@@ -6,13 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"fileName": {
-				"type": "string"
-			},
-			"baseURL": {
-				"type": "string"
-			},
-			"relativeURL": {
+			"filename": {
 				"type": "string"
 			}
 		},

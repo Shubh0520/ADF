@@ -49,52 +49,17 @@
 				"inputs": [
 					{
 						"referenceName": "ds_cases_death_csv",
-						"type": "DatasetReference",
-						"parameters": {
-							"relativeURL": {
-								"value": "@pipeline().parameters.sourceRelativeURL",
-								"type": "Expression"
-							},
-							"baseURL": {
-								"value": "@pipeline().parameters.sourceBaseURL",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "ds_cases_deaths_dl",
-						"type": "DatasetReference",
-						"parameters": {
-							"fileName": {
-								"value": "@pipeline().parameters.SinkFileName",
-								"type": "Expression"
-							},
-							"baseURL": {
-								"value": "@pipeline().parameters.sourceBaseURL",
-								"type": "Expression"
-							},
-							"relativeURL": {
-								"value": "@pipeline().parameters.sourceRelativeURL",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				]
 			}
 		],
-		"parameters": {
-			"sourceRelativeURL": {
-				"type": "string"
-			},
-			"SinkFileName": {
-				"type": "string"
-			},
-			"sourceBaseURL": {
-				"type": "string"
-			}
-		},
 		"folder": {
 			"name": "CovidReportingPipelines"
 		},

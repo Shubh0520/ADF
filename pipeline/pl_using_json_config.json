@@ -36,21 +36,16 @@
 			{
 				"name": "ForEach1",
 				"type": "ForEach",
-				"dependsOn": [
-					{
-						"activity": "Lookup JSON file",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
 						"value": "@activity('Lookup JSON file').output.value",
 						"type": "Expression"
 					},
-					"isSequential": true,
+					"isSequential": false,
 					"activities": [
 						{
 							"name": "Copy data1",
@@ -68,9 +63,8 @@
 								"source": {
 									"type": "DelimitedTextSource",
 									"storeSettings": {
-										"type": "AzureBlobFSReadSettings",
-										"recursive": true,
-										"enablePartitionDiscovery": false
+										"type": "HttpReadSettings",
+										"requestMethod": "GET"
 									},
 									"formatSettings": {
 										"type": "DelimitedTextReadSettings"
@@ -99,10 +93,14 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "ds_cases_deaths_dl",
+									"referenceName": "ds_cases_death_csv",
 									"type": "DatasetReference",
 									"parameters": {
-										"fileName": {
+										"baseUrl": {
+											"value": "@item().sourceBaseURL",
+											"type": "Expression"
+										},
+										"relativeBaseURL": {
 											"value": "@item().sourceRelativeURL",
 											"type": "Expression"
 										}
@@ -112,13 +110,7 @@
 							"outputs": [
 								{
 									"referenceName": "ds_cases_deaths_dl",
-									"type": "DatasetReference",
-									"parameters": {
-										"fileName": {
-											"value": "@item()",
-											"type": "Expression"
-										}
-									}
+									"type": "DatasetReference"
 								}
 							]
 						}

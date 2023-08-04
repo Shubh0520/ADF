@@ -6,13 +6,10 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"relativeURL": {
+			"baseUrl": {
 				"type": "string"
 			},
-			"baseURL": {
-				"type": "string"
-			},
-			"sinkFileName": {
+			"relativeBaseURL": {
 				"type": "string"
 			}
 		},
