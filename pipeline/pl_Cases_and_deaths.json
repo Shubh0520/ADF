@@ -65,7 +65,13 @@
 				"outputs": [
 					{
 						"referenceName": "ds_cases_deaths_dl",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": {
+								"value": "@pipeline().parameters.sinkFileName",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
@@ -75,6 +81,9 @@
 				"type": "string"
 			},
 			"relativeBaseURL": {
+				"type": "string"
+			},
+			"sinkFileName": {
 				"type": "string"
 			}
 		},
