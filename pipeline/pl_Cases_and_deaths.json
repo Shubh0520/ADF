@@ -49,7 +49,17 @@
 				"inputs": [
 					{
 						"referenceName": "ds_cases_death_csv",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"baseUrl": {
+								"value": "@pipeline().parameters.baseURL",
+								"type": "Expression"
+							},
+							"relativeBaseURL": {
+								"value": "@pipeline().parameters.relativeBaseURL",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
@@ -60,6 +70,14 @@
 				]
 			}
 		],
+		"parameters": {
+			"baseURL": {
+				"type": "string"
+			},
+			"relativeBaseURL": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "CovidReportingPipelines"
 		},
