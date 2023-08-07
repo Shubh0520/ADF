@@ -53,7 +53,7 @@
 					"isSequential": false,
 					"activities": [
 						{
-							"name": "Copy data1",
+							"name": "Copy data for each record",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
